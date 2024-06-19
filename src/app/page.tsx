@@ -128,7 +128,7 @@ export default function Home() {
     setIsLoading(false);
   }, [userInfoAgency]);
 
-  const handleRemove = (id, type) => {
+  const handleRemove = (id: any, type: any) => {
     if (type == 'INVESTOR') {
       removeUserInvestor(id);
     } else if (type === 'AGENCY') {
@@ -138,7 +138,7 @@ export default function Home() {
     }
   };
 
-  const handleLike = (id, type) => {
+  const handleLike = (id: any, type: any) => {
     if (type == 'INVESTOR') {
       toggleLikeInvestor(id);
     } else if (type === 'AGENCY') {
@@ -168,19 +168,19 @@ export default function Home() {
     liked: false,
   });
 
-  const handleNameChange = (e) => {
+  const handleNameChange = (e: any) => {
     const value = e.target.value;
     setNewInfo((prev) => ({ ...prev, name: value }));
   };
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e: any) => {
     const value = e.target.value;
     setNewInfo((prev) => ({ ...prev, email: value }));
   };
-  const handleCompanyChange = (e) => {
+  const handleCompanyChange = (e: any) => {
     const value = e.target.value;
     setNewInfo((prev) => ({ ...prev, compnay: value }));
   };
-  const handleTextChange = (e) => {
+  const handleTextChange = (e: any) => {
     const value = e.target.value;
     setNewInfo((prev) => ({ ...prev, text: value }));
   };
@@ -241,7 +241,7 @@ export default function Home() {
                 <div className="flex flex-col gap-[16px]">
                   {!isLoading &&
                     userInfoInvestor &&
-                    userInfoInvestor.map((item, index) => (
+                    userInfoInvestor.map((item: any, index: any) => (
                       <BasicCard
                         key={index}
                         id={item.id}
@@ -272,7 +272,7 @@ export default function Home() {
                 <div className="flex flex-col gap-[16px]">
                   {!isLoading &&
                     userInfoAgency &&
-                    userInfoAgency.map((item, index) => (
+                    userInfoAgency.map((item: any, index: any) => (
                       <BasicCard
                         key={index}
                         id={item.id}
@@ -303,7 +303,7 @@ export default function Home() {
                 <div className="flex flex-col gap-[16px]">
                   {!isLoading &&
                     userInfoMedia &&
-                    userInfoMedia.map((item, index) => (
+                    userInfoMedia.map((item: any, index: any) => (
                       <BasicCard
                         key={index}
                         id={item.id}
