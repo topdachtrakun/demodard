@@ -82,7 +82,7 @@ const useStore = create(
           liked: false,
         },
       ],
-      addUserAgency: (newUser) =>
+      addUserAgency: (newUser: any) =>
         set((state) => ({
           userInfoAgency: [...state.userInfoAgency, newUser],
         })),
