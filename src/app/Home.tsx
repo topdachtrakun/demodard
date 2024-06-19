@@ -1,150 +1,130 @@
 'use client';
 import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  AccordionActions,
   Button,
-  Stack,
   Typography,
   Card,
-  CardActions,
   CardContent,
-  CardMedia,
   Box,
   Modal,
   TextField,
 } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Image from 'next/image';
-import WorkIcon from '@mui/icons-material/Work';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import BasicCard from './components/basicCard';
 import AddIcon from '@mui/icons-material/Add';
-import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize';
-import { styled } from '@mui/system';
 import { nanoid } from 'nanoid';
-import useStore from './store/useUserStore';
+import { style, TextareaAutosize2 } from './page';
+
 export default function Home() {
-  // const [userInfoAgenCy, setUserInfoAgenCy] = useState([
-  //   {
-  //     id: '1',
-  //     compnay: 'TestOperation',
-  //     name: 'Mr.Test testsabud',
-  //     email: 'test.see@test.com',
-  //     text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
-  //     liked: false,
-  //   },
-  //   {
-  //     id: '2',
-  //     compnay: 'TestOperation',
-  //     name: 'Mr.Test testsabud',
-  //     email: 'test.see@test.com',
-  //     text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
-  //     liked: false,
-  //   },
-  //   {
-  //     id: '3',
-  //     compnay: 'TestOperation',
-  //     name: 'Mr.Test testsabud',
-  //     email: 'test.see@test.com',
-  //     text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
-  //     liked: false,
-  //   },
-  //   {
-  //     id: '4',
-  //     compnay: 'TestOperation',
-  //     name: 'Mr.Test testsabud',
-  //     email: 'test.see@test.com',
-  //     text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
-  //     liked: false,
-  //   },
-  // ]);
+  const [userInfoAgenCy, setUserInfoAgenCy] = useState([
+    {
+      id: '1',
+      compnay: 'TestOperation',
+      name: 'Mr.Test testsabud',
+      email: 'test.see@test.com',
+      text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
+      liked: false,
+    },
+    {
+      id: '2',
+      compnay: 'TestOperation',
+      name: 'Mr.Test testsabud',
+      email: 'test.see@test.com',
+      text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
+      liked: false,
+    },
+    {
+      id: '3',
+      compnay: 'TestOperation',
+      name: 'Mr.Test testsabud',
+      email: 'test.see@test.com',
+      text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
+      liked: false,
+    },
+    {
+      id: '4',
+      compnay: 'TestOperation',
+      name: 'Mr.Test testsabud',
+      email: 'test.see@test.com',
+      text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
+      liked: false,
+    },
+  ]);
 
-  // const [userInfoMedia, setUserInfoMedia] = useState([
-  //   {
-  //     id: '1',
-  //     compnay: 'TestOperation',
-  //     name: 'Mr.Test testsabud',
-  //     email: 'test.see@test.com',
-  //     text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
-  //     liked: false,
-  //   },
-  //   {
-  //     id: '2',
-  //     compnay: 'TestOperation',
-  //     name: 'Mr.Test testsabud',
-  //     email: 'test.see@test.com',
-  //     text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
-  //     liked: false,
-  //   },
-  //   {
-  //     id: '3',
-  //     compnay: 'TestOperation',
-  //     name: 'Mr.Test testsabud',
-  //     email: 'test.see@test.com',
-  //     text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
-  //     liked: false,
-  //   },
-  // ]);
+  const [userInfoMedia, setUserInfoMedia] = useState([
+    {
+      id: '1',
+      compnay: 'TestOperation',
+      name: 'Mr.Test testsabud',
+      email: 'test.see@test.com',
+      text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
+      liked: false,
+    },
+    {
+      id: '2',
+      compnay: 'TestOperation',
+      name: 'Mr.Test testsabud',
+      email: 'test.see@test.com',
+      text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
+      liked: false,
+    },
+    {
+      id: '3',
+      compnay: 'TestOperation',
+      name: 'Mr.Test testsabud',
+      email: 'test.see@test.com',
+      text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
+      liked: false,
+    },
+  ]);
 
-  // const [userInfoInvestor, setUserInfoInvestor] = useState([
-  //   {
-  //     id: '1',
-  //     compnay: 'TestOperation',
-  //     name: 'Mr.Test testsabud',
-  //     email: 'test.see@test.com',
-  //     text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
-  //     liked: false,
-  //   },
-  //   {
-  //     id: '2',
-  //     compnay: 'TestOperation',
-  //     name: 'Mr.Test testsabud',
-  //     email: 'test.see@test.com',
-  //     text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
-  //     liked: false,
-  //   },
-  // ]);
-
-  const {
-    userInfoAgency,
-    addUserAgency,
-    removeUserAgency,
-    toggleLikeAgency,
-    userInfoMedia,
-    addUserMedia,
-    removeUserMedia,
-    toggleLikeMedia,
-    userInfoInvestor,
-    addUserInvestor,
-    removeUserInvestor,
-    toggleLikeInvestor,
-  }: any = useStore();
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, [userInfoAgency]);
+  const [userInfoInvestor, setUserInfoInvestor] = useState([
+    {
+      id: '1',
+      compnay: 'TestOperation',
+      name: 'Mr.Test testsabud',
+      email: 'test.see@test.com',
+      text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
+      liked: false,
+    },
+    {
+      id: '2',
+      compnay: 'TestOperation',
+      name: 'Mr.Test testsabud',
+      email: 'test.see@test.com',
+      text: 'Hello my name is test naja. i am Agency from TestOperation. nice to meet you',
+      liked: false,
+    },
+  ]);
 
   const handleRemove = (id, type) => {
     if (type == 'INVESTOR') {
-      removeUserInvestor(id);
+      setUserInfoInvestor((prev) => prev.filter((user) => user.id !== id));
     } else if (type === 'AGENCY') {
-      removeUserAgency(id);
+      setUserInfoAgenCy((prev) => prev.filter((user) => user.id !== id));
     } else {
-      removeUserMedia(id);
+      setUserInfoMedia((prev) => prev.filter((user) => user.id !== id));
     }
   };
 
   const handleLike = (id, type) => {
     if (type == 'INVESTOR') {
-      toggleLikeInvestor(id);
+      setUserInfoInvestor((prev) =>
+        prev.map((user) =>
+          user.id === id ? { ...user, liked: !user.liked } : user
+        )
+      );
     } else if (type === 'AGENCY') {
-      toggleLikeAgency(id);
+      setUserInfoAgenCy((prev) =>
+        prev.map((user) =>
+          user.id === id ? { ...user, liked: !user.liked } : user
+        )
+      );
     } else {
-      toggleLikeMedia(id);
+      setUserInfoMedia((prev) =>
+        prev.map((user) =>
+          user.id === id ? { ...user, liked: !user.liked } : user
+        )
+      );
     }
   };
 
@@ -189,11 +169,11 @@ export default function Home() {
     const newww = { ...newInfo, id: nanoid() };
     setOpen(false);
     if (type == 'INVESTOR') {
-      addUserInvestor(newww);
+      setUserInfoInvestor((prev) => [...prev, newww]);
     } else if (type === 'AGENCY') {
-      addUserAgency(newww);
+      setUserInfoAgenCy((prev) => [...prev, newww]);
     } else {
-      addUserMedia(newww);
+      setUserInfoMedia((prev) => [...prev, newww]);
     }
   };
 
@@ -201,8 +181,8 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-8 w-full">
       <div className="flex flex-col w-full gap-[24px]">
         <div className="flex flex-col gap-[10px]">
-          <Typography fontSize={25} className=" text-center">
-            Profile Sharing
+          <Typography className="  text-xl text-white text-center">
+            {/* Profile sharing */}
           </Typography>
           <div className="lg:hidden flex flex-col gap-[16px]">
             <Button variant="outlined" size="large" href="/investor/">
@@ -211,7 +191,7 @@ export default function Home() {
             <Button variant="outlined" size="large" href="/agency/">
               AGENCY
             </Button>
-            <Button variant="outlined" size="large" href="/media/">
+            <Button variant="outlined" size="large">
               MEDIA
             </Button>
             {/* <Button variant="outlined" size="large">
@@ -237,10 +217,14 @@ export default function Home() {
                   onClick={(e) => handleOpen(e, 'INVESTOR')}
                 />
               </div>
+              {/* <CardMedia
+              sx={{ height: 140 }}
+              image="/static/images/cards/contemplative-reptile.jpg"
+              title="green iguana"
+            /> */}
               <CardContent>
                 <div className="flex flex-col gap-[16px]">
-                  {!isLoading &&
-                    userInfoInvestor &&
+                  {userInfoInvestor &&
                     userInfoInvestor.map((item, index) => (
                       <BasicCard
                         key={index}
@@ -268,11 +252,15 @@ export default function Home() {
                   onClick={(e) => handleOpen(e, 'AGENCY')}
                 />
               </div>
+              {/* <CardMedia
+              sx={{ height: 140 }}
+              image="/static/images/cards/contemplative-reptile.jpg"
+              title="green iguana"
+            /> */}
               <CardContent>
                 <div className="flex flex-col gap-[16px]">
-                  {!isLoading &&
-                    userInfoAgency &&
-                    userInfoAgency.map((item, index) => (
+                  {userInfoAgenCy &&
+                    userInfoAgenCy.map((item, index) => (
                       <BasicCard
                         key={index}
                         id={item.id}
@@ -299,10 +287,14 @@ export default function Home() {
                   onClick={(e) => handleOpen(e, 'MEDIA')}
                 />
               </div>
+              {/* <CardMedia
+              sx={{ height: 140 }}
+              image="/static/images/cards/contemplative-reptile.jpg"
+              title="green iguana"
+            /> */}
               <CardContent>
                 <div className="flex flex-col gap-[16px]">
-                  {!isLoading &&
-                    userInfoMedia &&
+                  {userInfoMedia &&
                     userInfoMedia.map((item, index) => (
                       <BasicCard
                         key={index}
@@ -369,7 +361,6 @@ export default function Home() {
                       onClick={handleSave}
                       size="large"
                       fullWidth
-                      // disabled={!isValid}
                     >
                       submit
                     </Button>
@@ -383,74 +374,3 @@ export default function Home() {
     </main>
   );
 }
-
-const blue = {
-  100: '#DAECFF',
-  200: '#b6daff',
-  400: '#3399FF',
-  500: '#007FFF',
-  600: '#0072E5',
-  900: '#003A75',
-};
-
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  pt: 2,
-  px: 4,
-  pb: 3,
-};
-
-const grey = {
-  50: '#F3F6F9',
-  100: '#E5EAF2',
-  200: '#DAE2ED',
-  300: '#C7D0DD',
-  400: '#B0B8C4',
-  500: '#9DA8B7',
-  600: '#6B7A90',
-  700: '#434D5B',
-  800: '#303740',
-  900: '#1C2025',
-};
-
-const TextareaAutosize2 = styled(BaseTextareaAutosize)(
-  ({ theme }) => `
-    box-sizing: border-box;
-    width: 100%;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.5;
-    padding: 8px 12px;
-    border-radius: 8px;
-    color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-    background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-    border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
-    box-shadow: 0px 2px 2px ${
-      theme.palette.mode === 'dark' ? grey[900] : grey[50]
-    };
-  
-    &:hover {
-      border-color: ${blue[400]};
-    }
-  
-    &:focus {
-      border-color: ${blue[400]};
-      box-shadow: 0 0 0 3px ${
-        theme.palette.mode === 'dark' ? blue[600] : blue[200]
-      };
-    }
-  
-    // firefox
-    &:focus-visible {
-      outline: 0;
-    }
-  `
-);
